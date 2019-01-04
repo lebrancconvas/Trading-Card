@@ -5,6 +5,7 @@ export default class Card extends Component {
         return (
             <div>
                 <h1>Card Slot Empty</h1>
+                <h2>Hello World</h2>
             </div>
         )
     }
