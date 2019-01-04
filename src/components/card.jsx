@@ -5,7 +5,8 @@ export default class Card extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            cardno: 0
+            cardno: 0,
+            img: ""
         }
         this.randomAccess = this.randomAccess.bind(this)
     }
