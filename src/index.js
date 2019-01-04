@@ -1,11 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {createStore,combineReducers} from 'redux'
+import {createStore,combineReducers,applyMiddleware} from 'redux'
+import {Provider} from 'react-redux'
 import './index.css'
 import App from './App'
 import * as serviceWorker from './serviceWorker'
 
-ReactDOM.render(<App />, document.getElementById('root'))
 
 const memberState = {
     cardno: 0,
@@ -31,16 +31,16 @@ const memberreducer = (state = memberState,action) => {
                 cardno: 4,
                 member: "Nico"
             }
-
+            
             break
-        default:
+            default:
             state = {
                 cardno: 0,
                 member: "Unknown"
             }
             break
-
-    }
+            
+        }
     return state
 }
 
@@ -78,30 +78,22 @@ const wotareducer = (state = wotaState,action) => {
 //     }
 // })
 
-const store = createStore(combineReducers({memberreducer,wotareducer}))
+const myLog = (store) => (next) => (action) => {
+    console.log("Action Update: ",action)
+    next(action)
+}
+const store = createStore(combineReducers({mem:memberreducer,fc:wotareducer}),{}.name,applyMiddleware(myLog))
 
 store.subscribe(() => {
     console.log("Update Store: ",store.getState())
 }) 
 
-store.dispatch({
-    type: "NICO"
-})
-
-store.dispatch({
-    type: "HARUPII"
-})
-
-store.dispatch({
-    type: "VIP"
-})
-
-store.dispatch({
-    type: "DOIKA"
-})
-
-
-
+ReactDOM.render(
+    <Provider store={store}>
+        <App />
+    </Provider>, 
+    document.getElementById('root')
+)
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

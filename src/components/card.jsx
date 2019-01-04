@@ -36,6 +36,7 @@ export default class Card extends Component {
         return (
             <div>
                 <Head>SiamDream Trading Card</Head>
+                <Head>Player : {this.props.wotaname}</Head>
                 <img src={this.state.img[this.state.cardno]} alt="randomidol" width="30%" height="50%" />
                 <div>
                     คุณสุ่มได้การ์ด {this.state.member[this.state.cardno]} SiamDream
