@@ -1,4 +1,5 @@
 import React , {Component} from 'react'
+import SiamDream from '../assets/img/siamdream.jpg'
 import Harupii from '../assets/img/harupii-siamdream2.jpg'
 import Hikarin from '../assets/img/hikarin-siamdream.jpg'
 import Nico from '../assets/img/nico-siamdream.jpg'
@@ -16,7 +17,7 @@ export default class Card extends Component {
         this.state = {
             cardno: 0,
             member:"",
-            img: ""
+            img: Harupii
         }
         this.randomAccess = this.randomAccess.bind(this)
     }
