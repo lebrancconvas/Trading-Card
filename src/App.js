@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import Card from './components/card.jsx'
-import logo from './logo.svg'
+import Card from './components/card.js'
 import './App.css'
 
 class App extends Component {
