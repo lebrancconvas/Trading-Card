@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Card from './components/card.js'
+import Card from './components/card.jsx'
 import './App.css'
 
 class App extends Component {
