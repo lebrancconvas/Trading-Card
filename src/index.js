@@ -1,35 +1,103 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {createStore} from 'redux'
+import {createStore,combineReducers} from 'redux'
 import './index.css'
 import App from './App'
 import * as serviceWorker from './serviceWorker'
 
 ReactDOM.render(<App />, document.getElementById('root'))
 
-const reducer = (state,action) => {
+const memberState = {
+    cardno: 0,
+    member: ""
+}
+
+const wotaState = {
+    queueno : 0,
+    wota: ""
+}
+
+const memberreducer = (state = memberState,action) => {
     switch(action.type) {
-        case "ADD":
-            state += action.payload
+        case "HARUPII":
+            state = {
+                cardno: 3,
+                member: "Harupii"
+            }
+
             break
-        case "SUBTRACT":
-            state -= action.payload
+        case "NICO":
+            state = {
+                cardno: 4,
+                member: "Nico"
+            }
+
             break
         default:
+            state = {
+                cardno: 0,
+                member: "Unknown"
+            }
+            break
 
     }
     return state
 }
 
-const store = createStore(reducer , 1000)
+const wotareducer = (state = wotaState,action) => {
+    switch(action.type) {
+        case "VIP":
+            state = {
+                queueno : 1,
+                wota: "Wichian Kun"
+            }
+            break
+        case "DOIKA":
+            state = {
+                queueno: 100,
+                wota: "Krajok Kun"
+            }
+            break
+        default:
+            state = {
+                queueno: 0,
+                wota: "Unknown"
+            }
+            break
+    }
+    return state
+}
+
+// const store = createStore((state,action) => {
+//     switch(action.type) {
+//         case 1:
+//             break
+//         case 2:
+//             break
+//         default:
+//     }
+// })
+
+const store = createStore(combineReducers({memberreducer,wotareducer}))
 
 store.subscribe(() => {
     console.log("Update Store: ",store.getState())
 }) 
 
 store.dispatch({
-    type: "ADD",
-    payload: 800
+    type: "NICO"
+})
+
+store.dispatch({
+    type: "HARUPII"
+})
+
+store.dispatch({
+    type: "VIP"
+})
+
+store.dispatch({
+    type: "DOIKA"
 })
 
 
