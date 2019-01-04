@@ -23,11 +23,15 @@ export default class Card extends Component {
         return (
             <div>
                 <h1>Card Slot Empty</h1>
+<<<<<<< HEAD
                 <img src=""/>
                 <div>
                     คุณสุ่มได้การ์ดหมายเลข {this.state.cardno}
                 </div>
                 <div className="button is-primary" onClick={this.randomAccess}>Random Card</div>
+=======
+                <h2>Hello World</h2>
+>>>>>>> d59b6e4757530d1af9dd870737f9376bc401a3b9
             </div>
         )
     }
