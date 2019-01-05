@@ -9,7 +9,8 @@ import * as serviceWorker from './serviceWorker'
 
 const memberState = {
     cardno: 0,
-    member: ""
+    member: "",
+    image: null
 }
 
 const wotaState = {
@@ -21,24 +22,54 @@ const memberreducer = (state = memberState,action) => {
     switch(action.type) {
         case "HARUPII":
             state = {
-                cardno: 3,
-                member: "Harupii"
+                cardno: 1,
+                member: "Harupii",
+                // image: Harupii
             }
-
+            break
+        case "HIKARIN":
+            state = {
+                cardno: 2,
+                member: "Hikarin"
+                // image: Hikarin
+            }
+            break
+        case "MARY":
+            state = {
+                cardno: 3,
+                member: "Mary"
+                // image: Mary
+            }
             break
         case "NICO":
             state = {
                 cardno: 4,
                 member: "Nico"
+                // image: Nico
             }
-            
             break
-            default:
+        case "FERN":
             state = {
-                cardno: 0,
-                member: "Unknown"
+                cardno: 5,
+                member: "Fern"
+                // image: Fern
             }
             break
+        case "ICE":
+            state = {
+                cardno: 6,
+                member: "Ice"
+                // image: Ice
+            }
+            break
+        case "MATILDA":
+            state = {
+                cardno: 7,
+                member: "Matilda"
+                // image: Matilda
+            }
+            break
+        default:
             
         }
     return state
@@ -49,21 +80,22 @@ const wotareducer = (state = wotaState,action) => {
         case "VIP":
             state = {
                 queueno : 1,
-                wota: "Wichian Kun"
+                wota: "Soma"
             }
             break
         case "DOIKA":
             state = {
                 queueno: 100,
-                wota: "Krajok Kun"
+                wota: "Poji"
             }
             break
-        default:
+        case "MAISAMA":
             state = {
-                queueno: 0,
-                wota: "Unknown"
+                queueno: 20,
+                wota: "Mai Sama"
             }
-            break
+        default:
+            
     }
     return state
 }

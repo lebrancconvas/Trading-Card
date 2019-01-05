@@ -1,4 +1,5 @@
 import React , {Component} from 'react'
+import {connect} from 'react-redux'
 import SiamDream from '../assets/img/siamdream.jpg'
 import Harupii from '../assets/img/harupii-siamdream2.jpg'
 import Hikarin from '../assets/img/hikarin-siamdream.jpg'
@@ -11,38 +12,40 @@ const Head = styled.h1`
     font-size: 30px;
 `
 
-export default class Card extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            cardno: 0,
-            member:"",
-            img: Harupii
-        }
-        this.randomAccess = this.randomAccess.bind(this)
-    }
-    
-
-    randomAccess() {
-        let ind = Math.floor((Math.random() * 4))
-        this.setState({
-            cardno: ind,
-            member: ["Harupii","Hikarin","Mary","Nico"],
-            img: [Harupii,Hikarin,Mary,Nico]
-        })
-    }
-
+class Card extends Component {
     render() {
         return (
             <div>
                 <Head>SiamDream Trading Card</Head>
                 <Head>Player : {this.props.wotaname}</Head>
-                <img src={this.state.img[this.state.cardno]} alt="randomidol" width="30%" height="50%" />
                 <div>
-                    คุณสุ่มได้การ์ด {this.state.member[this.state.cardno]} SiamDream
+                    คุณสุ่มได้การ์ด {this.props.memberName} SiamDream
                 </div>
-                <div className="button is-primary" onClick={this.randomAccess}>Random Card</div>
+                <div className="button is-primary" onClick={() => this.props.randomMember()}>
+                    Random Card
+                </div>
             </div>
         )
     }
 }
+
+const mapStatetoProps = (state) => {
+    return {
+        mem: state.mem,
+        fc: state.fc
+    }
+}
+
+const mapDispatchtoProps = (dispatch) => {
+    let member = ["HARUPII", "HIKARIN", "MARY", "NICO", "FERN", "ICE", "MATILDA"]
+    return {
+        randomMember: () => {
+            let rand = Math.floor((Math.random() * 7))
+            dispatch({
+                type: member[rand]
+            })
+        }
+    }
+}
+
+export default connect(mapStatetoProps,mapDispatchtoProps)(Card)
