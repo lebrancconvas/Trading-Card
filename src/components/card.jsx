@@ -18,7 +18,7 @@ class Card extends Component {
             <div>
                 <Head>SiamDream Trading Card</Head>
                 <Head>Player : {this.props.wotaname}</Head>
-                <div>
+                <div className="box">
                     คุณสุ่มได้การ์ด {this.props.memberName} SiamDream
                 </div>
                 <div className="button is-primary" onClick={() => this.props.randomMember()}>
