@@ -94,6 +94,7 @@ const wotareducer = (state = wotaState,action) => {
                 queueno: 20,
                 wota: "Mai Sama"
             }
+            break
         default:
             
     }
